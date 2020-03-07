@@ -1,9 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-const Conditional = ({condition, render}) => {
+const Conditional = ({condition, render, children}) => {
     if (condition) {
-        return render();
+        if (render) {
+            return render();
+        }
+        return children;
     }
     return null;
 };

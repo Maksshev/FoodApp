@@ -9,15 +9,16 @@ const Optional = function (value) {
             }
         }
 
-        hasValue(cb, sync) {
+        hasValue(cb) {
             if (!!privateValue) {
                 cb(privateValue);
             }
-            if (sync) {
-                return privateValue;
-            }
             return this;
         };
+
+        getValue() {
+            return privateValue || null;
+        }
 
         noValue(cb) {
             if (!!!privateValue) {

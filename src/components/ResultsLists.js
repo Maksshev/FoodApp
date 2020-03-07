@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, FlatList, StyleSheet} from 'react-native';
+import {View, Text, FlatList, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
 import ResultsList from './ResultsList';
 
 const ResultsLists = ({data, results}) => {
@@ -7,16 +7,24 @@ const ResultsLists = ({data, results}) => {
     const filterResults = price => results.filter(result => result.price === price);
 
     return (
-        <View>
+        <ScrollView style={styles.container}>
             <FlatList data={data}
                       renderItem={({item, index}) => (
-                          <ResultsList key={item.key} title={item.title} results={filterResults(item.price)}/>
+                              <ResultsList
+                                  key={item.key}
+                                  title={item.title}
+                                  results={filterResults(item.price)}
+                              />
                       )}
             />
-        </View>
+        </ScrollView>
     )
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    container: {
+        marginBottom: 10
+    }
+});
 
 export default ResultsLists;
