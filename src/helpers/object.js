@@ -42,9 +42,12 @@ const getProperty = (object, path) => {
 
 const createOptional = value => Optional(value);
 
+const isFunction = functionToCheck => functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+
 export default {
     getProperty,
-    createOptional
+    createOptional,
+    isFunction
 };
 
 
